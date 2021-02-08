@@ -1,0 +1,49 @@
+* clojure-mode-extra-font-locking
+
+向clojure-built-in-vars中添加关键字：
+
+;; clojure.string
+"lower-case" "upper-case" "trim"
+
+;; Thread
+"sleep"
+
+
+
+* web-mode
+
+(defvar web-mode-comment-formats
+  '(("java"       . "/*")
+    ("javascript" . "/*")
+    ("php"        . "/*");Jasondf changed to // when comment doesnt work well
+    ))
+
+((member language '("php" "javascript" "java" "jsx"))
+          (let (alt)
+            (cond
+             ((get-text-property pos 'jsx-element)
+              (setq content (concat "{/* " sel " */}"))
+              ;;(message "%S" pos)
+              )
+             ((and (setq alt (cdr (assoc language web-mode-comment-formats)))
+                   (not (string= alt "/*")));seanareed changed, add the 'not' back.新版本的机构已经变化了 
+              (setq content (replace-regexp-in-string "^[ ]*" alt sel)))
+             (t
+              (setq content (concat "/* " sel " */")))
+              ) ;cond
+            )
+          )
+
+* yasnippet ;新版本已经修改掉了
+
+(remove-duplicates (if mode
+                           (funcall dfs mode)
+                         ;Changed this according to bug fixe #619
+                         (apply #'append (mapcar dfs (cons major-mode yas--extra-modes)))))
+
+* neotree.el ;新版本已经默认修改了
+
+-      (rename-file current-path to-path)
++      (rename-file current-path to-path 1)
+
+

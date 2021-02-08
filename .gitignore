@@ -1,0 +1,11 @@
+*DS_Store
+.smex-items
+recentf
+ac-comphist.dat
+network-security.data
+*~
+*#
+auto-save-list/
+eshell/
+emms/
+/**/*DS_Store

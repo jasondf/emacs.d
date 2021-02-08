@@ -1,0 +1,7 @@
+(fsharp-mode
+ :fetcher github
+ :repo "rneatherway/emacs-fsharp-mode-bin"
+ :files ("*.el"
+         ("bin"
+          "fsautocomplete.exe"
+          "*.dll")))
